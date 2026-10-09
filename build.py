@@ -24,8 +24,9 @@ DOMAIN = "sweetsuitesgame.com"
 BASE = "https://" + DOMAIN
 APPSTORE = "https://apps.apple.com/app/id6820528894"
 EMAIL = "hello@" + DOMAIN
+PRIVACY_EMAIL = "privacy@" + DOMAIN
 COMPANY = "ELAQ Limited"
-EFFECTIVE = "8 October 2026"
+EFFECTIVE = "10 October 2026"
 YEAR = "2026"
 NAME = "Sweet Suites: Valet Jam"
 
@@ -327,7 +328,7 @@ FOOT = """<footer class="foot">
     <nav aria-label="Game"><h2>Game</h2><a href="{root}index.html#how">How it works</a><a href="{root}index.html#features">Features</a><a href="{root}support.html">Support &amp; FAQ</a><a href="mailto:{email}">{email}</a></nav>
     <nav aria-label="Legal"><h2>Legal</h2><a href="{root}privacy.html">Privacy policy</a><a href="{root}terms.html">Terms of use</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple Standard EULA</a></nav>
   </div>
-  <div class="wrap foot-base"><p>© {year} {company}. Free to play, with ads and optional in-app purchases.</p><p>This website uses no cookies and no analytics.</p></div>
+  <div class="wrap foot-base"><p>© {year} {company}. Free to play, with optional in-app purchases. No third-party ads and no tracking.</p><p>This website uses no cookies and no analytics.</p></div>
 </footer>"""
 
 HEAD = """<!doctype html>
@@ -367,14 +368,14 @@ PAGES = [
      "Slide candy-coloured cars out of a jammed valet lot, watch each one paint a pixel-art picture, "
      "and renovate a sweet hotel room by room. Free to play on iPhone."),
     ("support", "/support", "Support & FAQ · " + NAME,
-     "Help with Sweet Suites: Valet Jam: restoring purchases, ads and Remove Ads, ad-skip tickets, lives, "
+     "Help with Sweet Suites: Valet Jam: restoring purchases, in-game promotions and Remove Ads, ad-skip tickets, lives, "
      "lost progress, and how to contact us."),
     ("privacy", "/privacy", "Privacy policy · " + NAME,
-     "How Sweet Suites: Valet Jam handles data: no account, your save stays on your iPhone, ads by AppLovin MAX "
-     "with tracking only if you allow it, payments through Apple."),
+     "How Sweet Suites: Valet Jam handles data: no account and no server, your save stays on your iPhone, "
+     "no third-party ads and no tracking, payments through Apple."),
     ("terms", "/terms", "Terms of use · " + NAME,
-     "Terms of use for Sweet Suites: Valet Jam: virtual currency, in-app purchases through Apple, and the "
-     "ad-supported service."),
+     "Terms of use for Sweet Suites: Valet Jam: virtual currency, in-app purchases through Apple, and "
+     "in-game promotions."),
     ("404", "/404", "Page not found · " + NAME, "This page drove off the lot."),
 ]
 
@@ -402,7 +403,7 @@ def render(name, path, title, desc):
     tokens = {
         "SPRITE": sprite(), "LOT": svg_lot(), "PAINT": svg_paint(), "ROOM": svg_room(),
         "FLEET": fleet(), "LOST": svg_lost(), "BADGE": BADGE, "APPSTORE": APPSTORE,
-        "EMAIL": EMAIL, "COMPANY": COMPANY, "EFFECTIVE": EFFECTIVE, "DOMAIN": DOMAIN, "NAME": NAME,
+        "EMAIL": EMAIL, "PRIVACY_EMAIL": PRIVACY_EMAIL, "COMPANY": COMPANY, "EFFECTIVE": EFFECTIVE, "DOMAIN": DOMAIN, "NAME": NAME,
     }
     body = re.sub(r"\{\{(\w+)\}\}", lambda m: tokens[m.group(1)], body)
     if not body.lstrip().startswith("<svg class=\"sr\""):
